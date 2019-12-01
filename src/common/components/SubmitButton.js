@@ -10,6 +10,7 @@ const Container = styled(Form.Item)`
 const ButtonStyled = styled(Button)`
     width: 100%;
     margin: 0.5rem 0;
+    background-color: #0066cc;
 `;
 
 export const SubmitButton = ({ value, ...props }) => (

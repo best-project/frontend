@@ -5,7 +5,7 @@ import { SubmitButton } from '../../common/components/SubmitButton';
 import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from './style';
 import { authService, routingService } from '../../services/index';
 
-const LoginFormComponent = ({ form }) => {
+const RegisterFormComponent = ({ form }) => {
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -23,7 +23,6 @@ const LoginFormComponent = ({ form }) => {
         <FormWrapper>
             <Form onSubmit={handleSubmit}>
                 <Header>Learn.IT</Header>
-                <SubmitButton value="Continue with Facebook" type="primary" size="large" href="" />
                 <Input
                     id="email"
                     form={form}
@@ -32,17 +31,26 @@ const LoginFormComponent = ({ form }) => {
                     type="email"
                 />
                 <Input id="password" type="password" form={form} placeholder="Password" />
-                <SubmitButton value="Log in" type="primary" htmlType="submit" size="large" />
-                <JoinParagraph onClick={() => routingService.push('/forgot')}>
-                    I forgot my password!
-                </JoinParagraph>
-                <CenteredParagraph>Don't have an account?</CenteredParagraph>
-                <JoinParagraph onClick={() => routingService.push('/register')}>
-                    Join Learn.IT
-                </JoinParagraph>
+                <Input
+                    id="firstName"
+                    form={form}
+                    placeholder="First Name"
+                    message="First name is required"
+                    type="text"
+                />
+                <Input
+                    id="lastName"
+                    form={form}
+                    placeholder="Last name"
+                    message="Last name is required"
+                    type="text"
+                />
+                <SubmitButton value="Register" type="primary" htmlType="submit" size="large" />
+                <CenteredParagraph>Already have an account?</CenteredParagraph>
+                <JoinParagraph onClick={() => routingService.push('/')}>Login to Learn.IT</JoinParagraph>
             </Form>
         </FormWrapper>
     );
 };
 
-export const LoginForm = Form.create()(LoginFormComponent);
+export const RegisterForm = Form.create()(RegisterFormComponent);
