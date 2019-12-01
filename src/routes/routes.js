@@ -21,4 +21,8 @@ export const routes = [
         component: CoursesPage,
         auth: true,
     },
+    // {
+    //     path: '/facebook-login',
+    //     component: null,
+    // },
 ];

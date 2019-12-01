@@ -5,6 +5,7 @@ import { SubmitButton } from '../../common/components/SubmitButton';
 import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from './style';
 import { authService, routingService } from '../../services/index';
 import { showNotification, notificationText } from '../../common/helpers/notifications';
+import { facebookLoginUrl } from '../../config/variables';
 
 const LoginFormComponent = ({ form }) => {
     const handleSubmit = event => {
@@ -35,7 +36,12 @@ const LoginFormComponent = ({ form }) => {
         <FormWrapper>
             <Form onSubmit={handleSubmit}>
                 <Header>Learn.IT</Header>
-                <SubmitButton value="Continue with Facebook" type="primary" size="large" href="" />
+                <SubmitButton
+                    value="Continue with Facebook"
+                    type="primary"
+                    size="large"
+                    href={facebookLoginUrl}
+                />
                 <Input
                     id="email"
                     form={form}
