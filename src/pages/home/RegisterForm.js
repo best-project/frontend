@@ -4,21 +4,28 @@ import { Input } from '../../common/components/Input';
 import { SubmitButton } from '../../common/components/SubmitButton';
 import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from './style';
 import { authService, routingService } from '../../services/index';
+import { showNotification, notificationType } from '../../common/helpers/notifications';
 
 const RegisterFormComponent = ({ form }) => {
     const handleSubmit = event => {
         event.preventDefault();
 
-        form.validateFields((err, { email, password }) => {
+        form.validateFields((err, { firstName, lastName, email, password }) => {
             if (!err) {
-                authService.login(email, password).then(user => {
-                    routingService.push('/courses');
-                    return user;
-                });
+                authService
+                    .registerUser(firstName, lastName, email, password)
+                    .then(user => {
+                        showNotification({
+                            type: notificationType.Success,
+                            message: 'Account has been created.',
+                        });
+                        routingService.push('/');
+                        return user;
+                    })
+                    .catch(err => console.log(err));
             }
         });
     };
-
     return (
         <FormWrapper>
             <Form onSubmit={handleSubmit}>

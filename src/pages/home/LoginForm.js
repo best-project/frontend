@@ -4,6 +4,7 @@ import { Input } from '../../common/components/Input';
 import { SubmitButton } from '../../common/components/SubmitButton';
 import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from './style';
 import { authService, routingService } from '../../services/index';
+import { showNotification, notificationText } from '../../common/helpers/notifications';
 
 const LoginFormComponent = ({ form }) => {
     const handleSubmit = event => {
@@ -11,10 +12,21 @@ const LoginFormComponent = ({ form }) => {
 
         form.validateFields((err, { email, password }) => {
             if (!err) {
-                authService.login(email, password).then(user => {
-                    routingService.push('/courses');
-                    return user;
-                });
+                authService
+                    .login(email, password)
+                    .then(user => {
+                        routingService.push('/courses');
+                        return user;
+                    })
+                    // tutaj trzeba zrobić lepszy error handling
+                    .catch(err =>
+                        err.detail
+                            ? showNotification({ type: Notification.Success, message: err.detail })
+                            : showNotification({
+                                  type: Notification.Warning,
+                                  message: notificationText.Warning,
+                              }),
+                    );
             }
         });
     };

@@ -1,9 +1,16 @@
+import { BehaviorSubject } from 'rxjs';
 import handleResponse from '../../common/helpers/handleResponse.js';
+
+const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
 export class AuthServiceFactory {
     constructor(httpService, storageService) {
         this.httpService = httpService;
         this.storageService = new storageService();
+    }
+
+    currentUserValue() {
+        return currentUserSubject.value;
     }
 
     login(email, password) {
@@ -12,12 +19,14 @@ export class AuthServiceFactory {
             .then(handleResponse)
             .then(user => {
                 this.storageService.setItem('currentUser', JSON.stringify(user));
+                currentUserSubject.next(user);
                 return user;
             });
     }
 
     logout = () => {
         this.storageService.removeItem('currentUser');
+        currentUserSubject.next(null);
     };
 
     verifyToken(token) {
@@ -28,7 +37,9 @@ export class AuthServiceFactory {
         return this.httpService.PATCH('refresh-token', token);
     }
 
-    registerUser(name, email, password) {
-        return this.httpService.POST(`teams`, { name, email, password }).then(handleResponse);
+    registerUser(firstName, lastName, email, password) {
+        return this.httpService
+            .POST(`profiles`, { firstName, lastName, email, password })
+            .then(handleResponse);
     }
 }

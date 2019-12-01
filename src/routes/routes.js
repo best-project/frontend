@@ -1,6 +1,7 @@
 import LoginPage from '../pages/home/Login';
 import RegisterPage from '../pages/home/Register';
 import ForgotPasswordPage from '../pages/home/ForgotPassword';
+import CoursesPage from '../pages/courses/Courses';
 
 export const routes = [
     {
@@ -14,5 +15,10 @@ export const routes = [
     {
         path: '/forgot',
         component: ForgotPasswordPage,
+    },
+    {
+        path: '/courses',
+        component: CoursesPage,
+        auth: true,
     },
 ];
