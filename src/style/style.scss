@@ -1,0 +1,31 @@
+//Global
+body {
+  background: #fafafa;
+}
+
+@import "../../node_modules/mdbootstrap/scss/mdb-free";
+@import "./outline-remove";
+@import "./app.container";
+
+// Components
+@import "../common/components/divider/divider";
+@import "../common/components/card/card";
+@import "../common/components/button/social/social-button";
+@import "../common/components/form/input/form-input";
+@import "../common/components/loader/overlay/overlay-loader";
+@import "../common/components/images/image/image";
+@import "../common/components/breadcrumb/breadcrumb";
+@import "../common/components/form/text-area/form-text-area";
+@import "../common/components/modal/modal";
+@import "../common/components/button/button";
+@import "../common/components/select-file/select-file";
+@import "../common/components/button/small/button-small";
+
+// Core
+@import "../modules/core/app-bar/app-bar.style";
+@import "../modules/core/footer/footer";
+
+// App
+@import "../modules/app/home/home";
+@import "../modules/app/login/login";
+@import "../modules/app/courses/course";

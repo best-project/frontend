@@ -1,0 +1,17 @@
+.image-wrapper {
+  position: relative;
+  float: left;
+  
+  img {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    border: 1px solid #e7e7e7;
+  }
+}

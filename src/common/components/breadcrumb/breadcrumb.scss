@@ -1,0 +1,17 @@
+.breadcrumb {
+    display: none;
+    @include breakpoint(sm) {
+        display: flex;
+    }
+    background-color: unset;
+    padding: 0;
+    @include responsive-font-size(0.9rem);
+    .breadcrumb-item {
+        & + .breadcrumb-item {
+            &::before {
+                content: "";
+                padding-right: 0.1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.modal-dialog {
+    margin: 5rem 1rem;
+
+    @include breakpoint(sm) {
+        margin: 5rem auto;
+    }
+
+    .modal-header {
+        border-bottom: none;
+      
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .modal-footer {
+        justify-content: center;
+        border-top: none;
+    }
+}

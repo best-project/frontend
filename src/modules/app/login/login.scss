@@ -1,0 +1,12 @@
+.login {
+  .info-box {
+    width: 100%;
+    height: 100%;
+    background: #00b294;
+  }
+
+  &-social {
+    display: flex;
+    justify-content: center;
+  }
+}

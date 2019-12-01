@@ -1,0 +1,63 @@
+.select-file {
+
+    border: 2px dashed $mdb-color-lighten-1;
+    border-radius: 5px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+    &.-single {
+        .select-file__item {
+            margin: 15px auto 0;
+        }
+    }
+    .select-file__thumb-wrapper {
+        max-width: 120px;
+        margin: 0 auto 5px;
+    }
+
+    .select-file__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .select-file__item {
+        margin-top: 10px;
+        padding: 0 10px;
+        max-width: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .select-file__info {
+        align-self: flex-end;
+        width: 100%;
+    }
+
+    .select-file__size {
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .select-file__name {
+        margin-bottom: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: center;
+    }
+    .select-file__cta {
+        display: flex;
+        justify-content: center;
+    }
+
+    .select-file__thumb {
+        max-width: 100%;
+        height: auto;
+    }
+}

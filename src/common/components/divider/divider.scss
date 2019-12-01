@@ -1,0 +1,30 @@
+.split-layout {
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (min-width: 30em) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  &__divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 25px 0px;
+  }
+  
+  &__label {
+    padding: 1em;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color:  rgba(0, 0, 0, 0.3);
+  }
+
+  &__rule {
+    flex: 1;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-width: 1px 0 0 0; 
+  }
+}

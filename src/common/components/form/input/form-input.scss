@@ -1,0 +1,23 @@
+.md-form {
+  &.error {
+    label,
+    small {
+      color: $red-darken-2 !important;
+    }
+    input {
+      border-bottom: 1px $red-darken-2 solid !important;
+      box-shadow: 0 1px 0 0 $red-darken-2 !important;
+    }
+  }
+
+  &.success {
+    label,
+    small {
+      color: $green-darken-2 !important;
+    }
+    input {
+      border-bottom: 1px $green-darken-2 solid !important;
+      box-shadow: 0 1px 0 0 $green-darken-2 !important;
+    }
+  }
+}

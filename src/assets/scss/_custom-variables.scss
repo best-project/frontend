@@ -1,0 +1,49 @@
+// Your custom variables
+$poppins-font-path:                            "../../font/poppins/" !default;
+$poppins-font-family:                          "Poppins", sans-serif !default;
+$mdb-font-family:                             $poppins-font-family !default;
+
+$font-size-large:                             1.5rem !default;
+$font-size-small:                             .8rem !default;
+
+$xs: 400px !default;
+$sm: 576px !default;
+$md: 768px !default;
+$lg: 992px !default;
+$xl: 1200px !default;
+$xxl: 1600px !default;
+
+@mixin breakpoint($name) {
+  @if $name == "xs" {
+      @media all and (min-width: $xs) {
+          @content;
+      }
+  } @else if $name == "sm" {
+      @media all and (min-width: $sm) {
+          @content;
+      }
+  } @else if $name == "md" {
+      @media all and (min-width: $md) {
+          @content;
+      }
+  } @else if $name == "lg" {
+      @media all and (min-width: $lg) {
+          @content;
+      }
+  } @else if $name == "xl" {
+      @media all and (min-width: $xl) {
+          @content;
+      }
+  } @else if $name == "xxl" {
+      @media all and (min-width: $xxl) {
+          @content;
+      }
+  } @else {
+      @if type-of($name) != "number" {
+          @warn "This breakpoint does not exist:  #{$name}";
+      }
+      @media all and (min-width: $name) {
+          @content;
+      }
+  }
+}

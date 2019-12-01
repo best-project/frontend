@@ -1,0 +1,15 @@
+.custom-select:focus,
+.form-control:focus {
+    box-shadow: unset !important;
+}
+
+button,
+button:focus,
+a,
+[tabindex],
+[href],
+input,
+select,
+textarea {
+    outline: none;
+}
