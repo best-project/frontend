@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form } from 'antd';
 import { Input } from '../../common/components/Input';
 import { SubmitButton } from '../../common/components/SubmitButton';
-import { FormWrapper } from './style';
+import { FormWrapper, Header } from './style';
 
 const LoginFormComponent = ({ form }) => {
     const handleSubmit = event => {
@@ -16,7 +16,7 @@ const LoginFormComponent = ({ form }) => {
     return (
         <FormWrapper>
             <Form onSubmit={handleSubmit}>
-                Learn.IT Great to see you again!
+                <Header>Learn.IT</Header>
                 <SubmitButton value="Continue with Facebook" type="primary" size="large" href="" />
                 <Input
                     id="email"

@@ -59,3 +59,9 @@ export const FormWrapper = styled.div`
         width: 400px;
     }
 `;
+
+export const Header = styled.p`
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 15px;
+`;
