@@ -63,7 +63,7 @@ export const FormWrapper = styled.div`
 export const Header = styled.p`
     margin: 1rem 0;
     text-align: center;
-    font-size: 15px;
+    font-size: 22px;
 `;
 
 export const CenteredParagraph = styled.p`
