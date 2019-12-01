@@ -65,3 +65,13 @@ export const Header = styled.p`
     text-align: center;
     font-size: 15px;
 `;
+
+export const CenteredParagraph = styled.p`
+    margin: 0.2rem 0;
+    text-align: center;
+`;
+
+export const JoinParagraph = styled(CenteredParagraph)`
+    cursor: pointer;
+    text-decoration: underline;
+`;

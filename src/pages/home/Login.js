@@ -1,10 +1,15 @@
 import React from 'react';
-import { BrandWrapper, Image, Wrapper, LoginPanelWrapper } from './style';
+import { BrandWrapper, Image, Wrapper } from './style';
 import loginIcon from '../../images/loginIcon.svg';
 import { GradientLayout } from '../../common/components/gradientLayout';
 import { LoginForm } from './LoginForm';
+import { authService, routingService } from '../../services';
 
-const HomePage = () => {
+const LoginPage = () => {
+    if (authService.currentUserValue()) {
+        routingService.push('/courses');
+    }
+
     return (
         <GradientLayout>
             <Wrapper>
@@ -17,4 +22,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default LoginPage;
