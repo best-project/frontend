@@ -42,4 +42,8 @@ export class AuthServiceFactory {
             .POST(`profiles`, { firstName, lastName, email, password })
             .then(handleResponse);
     }
+
+    registerFacebookUser(accessToken) {
+        return this.httpService.POST(`social/facebook`, { accessToken }).then(handleResponse);
+    }
 }
