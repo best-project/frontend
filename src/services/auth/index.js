@@ -42,4 +42,15 @@ export class AuthServiceFactory {
             .POST(`profiles`, { firstName, lastName, email, password })
             .then(handleResponse);
     }
+
+    registerFacebookUser(accessToken) {
+        return this.httpService
+            .POST(`social/facebook`, { accessToken })
+            .then(handleResponse)
+            .then(user => {
+                this.storageService.setItem('currentUser', JSON.stringify(user));
+                currentUserSubject.next(user);
+                return user;
+            });
+    }
 }

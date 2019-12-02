@@ -2,6 +2,7 @@ import LoginPage from '../pages/home/Login';
 import RegisterPage from '../pages/home/Register';
 import ForgotPasswordPage from '../pages/home/ForgotPassword';
 import CoursesPage from '../pages/courses/Courses';
+import FaceobokLoginPage from '../pages/home/FacebookLogin';
 
 export const routes = [
     {
@@ -21,8 +22,8 @@ export const routes = [
         component: CoursesPage,
         auth: true,
     },
-    // {
-    //     path: '/facebook-login',
-    //     component: null,
-    // },
+    {
+        path: '/facebook-login',
+        component: FaceobokLoginPage,
+    },
 ];
