@@ -1,5 +1,5 @@
 import React from 'react';
-import { authService } from '../../services';
+import { authService, routingService } from '../../services';
 import { Redirect } from 'react-router-dom';
 
 const FaceobokLoginPage = props => {
@@ -12,9 +12,18 @@ const FaceobokLoginPage = props => {
 
     facebookAccessToken = facebookAccessToken.replace(`access_token=`, '');
     // tutaj trzeba wysłać accessToken
-    authService.registerFacebookUser(facebookAccessToken).catch(err => console.log(err));
+    authService
+        .registerFacebookUser(facebookAccessToken)
+        .then(user => {
+            if (user) {
+                routingService.push('/courses');
+            } else {
+                return <Redirect to="/" />;
+            }
+        })
+        .catch(err => console.log(err));
 
-    return <Redirect to="/" />;
+    return null;
 };
 
 export default FaceobokLoginPage;

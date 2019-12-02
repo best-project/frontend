@@ -44,6 +44,13 @@ export class AuthServiceFactory {
     }
 
     registerFacebookUser(accessToken) {
-        return this.httpService.POST(`social/facebook`, { accessToken }).then(handleResponse);
+        return this.httpService
+            .POST(`social/facebook`, { accessToken })
+            .then(handleResponse)
+            .then(user => {
+                this.storageService.setItem('currentUser', JSON.stringify(user));
+                currentUserSubject.next(user);
+                return user;
+            });
     }
 }
