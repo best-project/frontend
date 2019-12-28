@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form } from 'antd';
 import { Input } from '../../common/components/Input';
 import { SubmitButton } from '../../common/components/SubmitButton';
-import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from './style';
+import { FormWrapper, Header, JoinParagraph, CenteredParagraph } from '../../pages/home/style';
 import { authService, routingService } from '../../services/index';
 import { showNotification, notificationText } from '../../common/helpers/notifications';
 import { facebookLoginUrl } from '../../config/variables';

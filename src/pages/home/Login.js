@@ -2,7 +2,7 @@ import React from 'react';
 import { BrandWrapper, Image, Wrapper } from './style';
 import loginIcon from '../../images/loginIcon.svg';
 import { GradientLayout } from '../../common/components/gradientLayout';
-import { LoginForm } from './LoginForm';
+import { LoginForm } from '../../components/forms/LoginForm';
 import { authService, routingService } from '../../services';
 
 const LoginPage = () => {

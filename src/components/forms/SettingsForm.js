@@ -4,6 +4,8 @@ import { Form } from 'antd';
 import { SubmitButton } from '../../common/components/SubmitButton';
 import { authService } from '../../services';
 
+// ten plik jest do refaktoru
+
 const SettingsFormComponent = ({ form }) => {
     const user = authService.currentUserValue();
 
