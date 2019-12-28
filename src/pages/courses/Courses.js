@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { authService, courseService } from '../../services';
+import { authService, courseService, routingService } from '../../services';
 import { Layout } from 'antd';
 import { CourseCard } from '../../common/components/Card';
 import { apiBase } from '../../config/variables';
@@ -69,7 +69,7 @@ const CoursesPage = () => {
                 <MenuWrapper>
                     <Menu mode="horizontal" selectable={false}>
                         <Menu.Item onClick={() => console.log('XD')}>Courses</Menu.Item>
-                        <Menu.Item onClick={() => console.log('XD')}>Settings</Menu.Item>
+                        <Menu.Item onClick={() => routingService.push('settings')}>Settings</Menu.Item>
 
                         <Menu.Item onClick={authService.logout}>
                             <Link to="/">Log out</Link>
