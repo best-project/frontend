@@ -28,11 +28,11 @@ export class HttpServiceFactory {
     }
 
     makeRequest(method, url, body) {
-        const token = this.storageService.getItem(jwtToken);
+        const token = JSON.parse(this.storageService.getItem(jwtToken));
 
         const headers = {
             'Content-Type': 'application/json',
-            ...(token && { Authorization: `JWT ${token}` }),
+            ...(token && { Authorization: `${token.token}` }),
         };
 
         const options = {
@@ -40,7 +40,7 @@ export class HttpServiceFactory {
             headers,
             body: JSON.stringify(body),
         };
-        const path = `${this.apiBase}/${url}/`;
+        const path = `${this.apiBase}/${url}`;
 
         return fetch(path, options);
     }
@@ -49,9 +49,9 @@ export class HttpServiceFactory {
         const formData = new FormData();
         Object.keys(body).forEach(fieldName => formData.append(fieldName, body[fieldName]));
 
-        const token = this.storageService.getItem(jwtToken);
+        const token = JSON.parse(this.storageService.getItem(jwtToken));
         const headers = {
-            ...(token && { Authorization: `JWT ${token}` }),
+            ...(token && { Authorization: `${token.token}` }),
         };
 
         const options = {

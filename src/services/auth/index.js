@@ -15,7 +15,7 @@ export class AuthServiceFactory {
 
     login(email, password) {
         return this.httpService
-            .POST('token', { email, password })
+            .POST('login', { email, password })
             .then(handleResponse)
             .then(user => {
                 this.storageService.setItem('currentUser', JSON.stringify(user));
@@ -39,7 +39,7 @@ export class AuthServiceFactory {
 
     registerUser(firstName, lastName, email, password) {
         return this.httpService
-            .POST(`profiles`, { firstName, lastName, email, password })
+            .POST(`register/user`, { firstName, lastName, email, password })
             .then(handleResponse);
     }
 

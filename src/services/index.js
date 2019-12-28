@@ -4,7 +4,9 @@ import { AuthServiceFactory } from './auth';
 import { RoutingService } from './routing';
 import { history } from '../config/history.js';
 import { StorageService } from './storage';
+import { courseServiceFactory } from './course';
 
 export const httpService = new HttpServiceFactory(apiBase, fetch, StorageService);
 export const routingService = new RoutingService(history);
 export const authService = new AuthServiceFactory(httpService, StorageService);
+export const courseService = courseServiceFactory(httpService);
