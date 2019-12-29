@@ -7,11 +7,19 @@ import { HeaderComponent } from '../../components/Header';
 import { FooterComponent } from '../../components/Footer';
 import { ContentComponent } from '../../components/Content';
 import { CoursesWrapperComponent } from '../../components/CoursesWrapper';
+import CreateCourseButtonComponent from '../../common/components/CreateCourseButton';
 
 const ListCoursesWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
-    padding: 0 15px;
+    justify-content: space-evenly;
+`;
+
+const FantomContainer = styled.div`
+    margin: 5px;
+    min-width: 240px;
+    max-width: 240px;
+    flex: 1;
 `;
 
 const CoursesPage = () => {
@@ -25,6 +33,7 @@ const CoursesPage = () => {
         <CoursesWrapperComponent>
             <HeaderComponent />
             <ContentComponent>
+                <CreateCourseButtonComponent />
                 <h2>All available courses</h2>
                 <ListCoursesWrapper>
                     {coursesMeta.map(({ id, name, description, image }) => {
@@ -32,15 +41,20 @@ const CoursesPage = () => {
                         return (
                             <CourseCard
                                 key={id}
+                                courseId={id}
                                 title={name}
                                 description={description}
                                 image={apiBase + image}
                             />
                         );
                     })}
+                    {Array(4)
+                        .fill(4)
+                        .map(() => (
+                            <FantomContainer key={1} />
+                        ))}
                 </ListCoursesWrapper>
             </ContentComponent>
-            <FooterComponent />
         </CoursesWrapperComponent>
     );
 };

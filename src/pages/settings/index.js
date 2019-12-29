@@ -12,7 +12,7 @@ const SettingsPage = () => {
             <ContentComponent>
                 <SettingsForm />
             </ContentComponent>
-            <FooterComponent />
+            {/* <FooterComponent /> */}
         </CoursesWrapperComponent>
     );
 };

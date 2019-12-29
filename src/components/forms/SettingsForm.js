@@ -14,6 +14,7 @@ const SettingsFormComponent = ({ form }) => {
 
         form.validateFields((err, { email, password }) => {
             if (!err) {
+                // tutaj trzeba pamietac o zrobieniu update currentUser w localsotrage
                 console.log('validate');
             }
         });

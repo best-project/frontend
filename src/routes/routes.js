@@ -4,6 +4,7 @@ import ForgotPasswordPage from '../pages/home/ForgotPassword';
 import CoursesPage from '../pages/courses';
 import SettingsPage from '../pages/settings';
 import FaceobokLoginPage from '../pages/home/FacebookLogin';
+import CoursePage from '../pages/course';
 
 export const routes = [
     {
@@ -30,5 +31,9 @@ export const routes = [
     {
         path: '/settings',
         component: SettingsPage,
+    },
+    {
+        path: '/course/:courseId',
+        component: CoursePage,
     },
 ];
