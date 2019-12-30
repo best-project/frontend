@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { CreateCourseModalComponent } from '../../components/CreateCourseModal';
 import { SubmitButton } from '../../common/components/SubmitButton';
+import { courseService } from '../../services';
 
 export const Wrapper = styled.div`
     margin-bottom: 20px;
@@ -15,11 +16,15 @@ const CreateCourseButtonComponent = () => {
     const handleCreate = () => {
         formRef.validateFields((err, values) => {
             if (err) {
-                console.log(values);
                 return;
             }
 
-            console.log('Received values of form: ', values);
+            const data = {
+                ...values,
+                image: values.image.file.originFileObj,
+            };
+            courseService.postCourse(data);
+
             formRef.resetFields();
             setVisible(false);
         });

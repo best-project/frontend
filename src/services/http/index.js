@@ -59,7 +59,7 @@ export class HttpServiceFactory {
             headers,
             body: formData,
         };
-        const path = `${this.apiBase}/${url}/`;
+        const path = `${this.apiBase}/${url}`;
 
         return fetch(path, options);
     }
