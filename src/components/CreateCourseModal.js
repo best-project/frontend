@@ -1,26 +1,47 @@
-import React, { useState } from 'react';
-import { Form, Modal } from 'antd';
+import React from 'react';
+import { Form, Modal, Upload, Button, Icon } from 'antd';
 import { Input } from '../common/components/Input';
+import { Select } from '../common/components/Select';
+import { dummyUploadPhotoRequest } from '../common/helpers/dummyUploadPhotoRequest';
 
-// ten plik jest do refaktoru
+const CreateCourseModal = ({ visible, onCancel, onCreate, fileList, setCurrentList, form }) => {
+    const initialValue = 'standard';
+    const selectTypes = [
+        {
+            name: 'Standard',
+            value: 'standard',
+        },
+        {
+            name: 'Puzzle',
+            value: 'puzzle',
+        },
+    ];
 
-const CreateCourseModal = ({ visible, onCancel, onCreate, form }) => {
-    // const handleSubmit = event => {
-    //     event.preventDefault();
+    const handleOnChange = info => {
+        let fileList = [...info.fileList];
+        fileList = fileList.slice(-1);
 
-    //     form.validateFields((err, { email, password }) => {
-    //         if (!err) {
-    //             // tutaj trzeba pamietac o zrobieniu update currentUser w localsotrage
-    //             console.log('validate');
-    //         }
-    //     });
+        setCurrentList(fileList);
+    };
 
     return (
         <Modal title="Create new course" visible={visible} onOk={onCreate} onCancel={onCancel}>
             <Form>
-                <Input id="email" form={form} label="E-mail" initialValue="" />
-                <Input id="firstName" form={form} label="First Name" initialValue="" />
-                <Input id="lastName" form={form} label="Last Name" initialValue="" />
+                <Input id="name" form={form} label="Course Name" initialValue="" />
+                <Input id="description" form={form} label="Description" initialValue="" />
+                <Select initialValue={initialValue} options={selectTypes} form={form} id="type" />
+                {/* Upload trzeba przenieść do innego componentu i zrobić injecta z form */}
+                <Upload
+                    onChange={handleOnChange}
+                    listType="image"
+                    multiple={false}
+                    fileList={fileList}
+                    customRequest={dummyUploadPhotoRequest}
+                >
+                    <Button>
+                        <Icon type="upload" /> Upload course's image
+                    </Button>
+                </Upload>
             </Form>
         </Modal>
     );

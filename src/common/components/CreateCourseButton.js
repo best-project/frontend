@@ -10,10 +10,12 @@ export const Wrapper = styled.div`
 const CreateCourseButtonComponent = () => {
     const [visible, setVisible] = useState(false);
     const [formRef, setFormRef] = useState(null);
+    const [currentFileList, setCurrentFileList] = useState([]);
 
     const handleCreate = () => {
         formRef.validateFields((err, values) => {
             if (err) {
+                console.log(values);
                 return;
             }
 
@@ -37,6 +39,8 @@ const CreateCourseButtonComponent = () => {
                 visible={visible}
                 onCancel={() => setVisible(false)}
                 onCreate={() => handleCreate()}
+                fileList={currentFileList}
+                setCurrentList={setCurrentFileList}
             />
         </Wrapper>
     );

@@ -34,10 +34,7 @@ export const CourseCard = ({ courseId, image, title, description }) => {
                 style={{ width: 240 }}
                 cover={<img style={{ height: 180 }} alt="example" src={image} />}
             >
-                <Meta
-                    title="Europe Street beat"
-                    description="długi descriptiondługi descriptiondługi descriptiondługi descriptiondługi descriptiondługi description"
-                />
+                <Meta title={title} description={description} />
             </CardStyled>
         </Link>
     );

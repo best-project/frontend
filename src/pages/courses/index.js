@@ -4,7 +4,6 @@ import { courseService } from '../../services';
 import { CourseCard } from '../../common/components/Card';
 import { apiBase } from '../../config/variables';
 import { HeaderComponent } from '../../components/Header';
-import { FooterComponent } from '../../components/Footer';
 import { ContentComponent } from '../../components/Content';
 import { CoursesWrapperComponent } from '../../components/CoursesWrapper';
 import CreateCourseButtonComponent from '../../common/components/CreateCourseButton';
@@ -37,7 +36,6 @@ const CoursesPage = () => {
                 <h2>All available courses</h2>
                 <ListCoursesWrapper>
                     {coursesMeta.map(({ id, name, description, image }) => {
-                        console.log(apiBase + image);
                         return (
                             <CourseCard
                                 key={id}
@@ -51,7 +49,7 @@ const CoursesPage = () => {
                     {Array(4)
                         .fill(4)
                         .map(() => (
-                            <FantomContainer key={1} />
+                            <FantomContainer key={Number(Math.random())} />
                         ))}
                 </ListCoursesWrapper>
             </ContentComponent>
