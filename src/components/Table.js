@@ -4,6 +4,7 @@ import CollectionCreateForm from './AddWordModal';
 import { SubmitButton } from '../common/components/SubmitButton';
 import { apiBase } from '../config/variables';
 import { courseService } from '../services';
+import { notificationType, showNotification } from '../common/helpers/notifications';
 
 const EditableContext = React.createContext();
 
@@ -190,6 +191,11 @@ export default class EditableTable extends React.Component {
             this.setState({
                 dataSource: [...dataSource, newData],
                 count: count + 1,
+            });
+
+            showNotification({
+                type: notificationType.Success,
+                message: 'Word has been added.',
             });
         });
     };

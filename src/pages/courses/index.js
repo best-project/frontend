@@ -32,7 +32,7 @@ const CoursesPage = () => {
         <CoursesWrapperComponent>
             <HeaderComponent />
             <ContentComponent>
-                <CreateCourseButtonComponent />
+                <CreateCourseButtonComponent setCourses={setCoursesMeta} />
                 <h2>All available courses</h2>
                 <ListCoursesWrapper>
                     {coursesMeta.map(({ id, name, description, image }) => {

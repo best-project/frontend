@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Avatar } from 'antd';
+import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -11,21 +11,6 @@ const CardStyled = styled(Card)`
 `;
 
 export const CourseCard = ({ courseId, image, title, description }) => {
-    // <Card
-    //     style={{ width: 280 }}
-    //     cover={<img alt="example" src={imgUrl} />}
-    //     actions={[
-    //         <Icon type="setting" key="setting" />,
-    //         <Icon type="edit" key="edit" />,
-    //         <Icon type="ellipsis" key="ellipsis" />,
-    //     ]}
-    // >
-    //     <Meta
-    //         avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-    //         title={title}
-    //         description={description}
-    //     /
-    // </Card>
     const link = '/course/' + courseId;
     return (
         <Link to={link}>

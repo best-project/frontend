@@ -52,7 +52,7 @@ const RegisterFormComponent = ({ form }) => {
                     message="Last name is required"
                     type="text"
                 />
-                <SubmitButton value="Register" type="primary" htmlType="submit" size="large" />
+                <SubmitButton value="Sign up" type="primary" htmlType="submit" size="large" />
                 <CenteredParagraph>Already have an account?</CenteredParagraph>
                 <JoinParagraph onClick={() => routingService.push('/')}>Login to Learn.IT</JoinParagraph>
             </Form>

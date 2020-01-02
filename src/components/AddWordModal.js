@@ -1,33 +1,4 @@
 import React from 'react';
-// import { Form, Modal, Button, Icon } from 'antd';
-// import { Input } from '../common/components/Input';
-// import { Upload } from '../common/components/Upload';
-
-// const AddWordModal = ({ visible, onCancel, onCreate, fileList, setCurrentList, form }) => {
-//     return (
-//         <Modal title="Create new course" visible={visible} onOk={onCreate} onCancel={onCancel}>
-//             <Form>
-//                 <Input id="word" form={form} label="Word" initialValue="" />
-//                 <Input id="translation" form={form} label="Translation" initialValue="" />
-//                 <Upload
-//                     listType="image"
-//                     multiple={false}
-//                     fileList={fileList}
-//                     setCurrentList={setCurrentList}
-//                     form={form}
-//                     id="image"
-//                 >
-//                     <Button>
-//                         <Icon type="upload" /> Upload course's image
-//                     </Button>
-//                 </Upload>
-//             </Form>
-//         </Modal>
-//     );
-// };
-
-// export const AddWordModalComponent = Form.create()(AddWordModal);
-
 import { Modal, Form, Input, Button, Icon } from 'antd';
 import { Upload } from '../common/components/Upload';
 
