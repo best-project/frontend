@@ -8,9 +8,14 @@ export const courseServiceFactory = httpService => {
     const postCourse = data =>
         httpService.makeRequestForm(Methods.POST, `course/create`, data).then(handleResponse);
 
+    const addWordToCourse = data => {
+        httpService.makeRequestForm(Methods.POST, `course/task/add`, data).then(handleResponse);
+    };
+
     return {
         getCoursesMeta,
         getCourseDetails,
         postCourse,
+        addWordToCourse,
     };
 };

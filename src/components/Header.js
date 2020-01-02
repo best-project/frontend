@@ -50,7 +50,7 @@ export const HeaderComponent = () => {
                 <MenuWrapper>
                     <Menu mode="horizontal" selectable={false}>
                         <Menu.Item onClick={() => routingService.push('/')}>Courses</Menu.Item>
-                        <Menu.Item onClick={() => routingService.push('settings')}>Settings</Menu.Item>
+                        <Menu.Item onClick={() => routingService.push('/settings')}>Settings</Menu.Item>
                         <Menu.Item onClick={authService.logout}>
                             <Link to="/">Log out</Link>
                         </Menu.Item>

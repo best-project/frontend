@@ -1,5 +1,9 @@
 import React from 'react';
 import { Table, Input, Button, Popconfirm, Form } from 'antd';
+import CollectionCreateForm from './AddWordModal';
+import { SubmitButton } from '../common/components/SubmitButton';
+import { apiBase } from '../config/variables';
+import { courseService } from '../services';
 
 const EditableContext = React.createContext();
 
@@ -100,12 +104,18 @@ export default class EditableTable extends React.Component {
                 title: 'word',
                 dataIndex: 'word',
                 width: '30%',
-                editable: true,
+                editable: false,
             },
             {
                 title: 'translation',
                 dataIndex: 'translation',
-                editable: true,
+                editable: false,
+            },
+            {
+                title: 'image',
+                dataIndex: 'image',
+                editable: false,
+                render: (text, record) => <img width={100} height={100} src={text} />,
             },
             {
                 title: 'operation',
@@ -122,26 +132,74 @@ export default class EditableTable extends React.Component {
             },
         ];
 
+        let courseDetails = [];
+        if (props.courseDetails && props.courseDetails[0] && props.courseDetails[0].data) {
+            courseDetails = props.courseDetails[0].data;
+            courseDetails = courseDetails.map(({ translate, word, image, id }) => {
+                return {
+                    key: id,
+                    word: word,
+                    translation: translate,
+                    image: apiBase + image,
+                };
+            });
+        }
+
         this.state = {
-            dataSource: [
-                {
-                    key: '0',
-                    word: 'Dog',
-                    translation: 'Pies',
-                },
-                {
-                    key: '1',
-                    word: 'Elephant',
-                    translation: 'Słoń',
-                },
-            ],
-            count: 2,
+            dataSource: courseDetails,
+            count: courseDetails.length,
+            visible: false,
         };
     }
+
+    showModal = () => {
+        this.setState({ visible: true });
+    };
 
     handleDelete = key => {
         const dataSource = [...this.state.dataSource];
         this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
+    };
+
+    handleCreate = () => {
+        const { form } = this.formRef.props;
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+
+            const data = {
+                courseId: this.props.courseId,
+                word: values.word,
+                translate: values.translation,
+                image: values.image.file.originFileObj,
+            };
+            form.resetFields();
+
+            courseService.addWordToCourse(data);
+
+            const { count, dataSource } = this.state;
+            const newData = {
+                key: count,
+                word: values.word,
+                translation: values.translation,
+                image: URL.createObjectURL(values.image.file.originFileObj),
+            };
+            this.setState({ visible: false });
+
+            this.setState({
+                dataSource: [...dataSource, newData],
+                count: count + 1,
+            });
+        });
+    };
+
+    saveFormRef = formRef => {
+        this.formRef = formRef;
+    };
+
+    handleCancel = () => {
+        this.setState({ visible: false });
     };
 
     handleAdd = () => {
@@ -156,6 +214,8 @@ export default class EditableTable extends React.Component {
             dataSource: [...dataSource, newData],
             count: count + 1,
         });
+
+        this.setState({ visible: true });
     };
 
     handleSave = row => {
@@ -194,9 +254,13 @@ export default class EditableTable extends React.Component {
         });
         return (
             <div>
-                <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
-                    Add new word
-                </Button>
+                <SubmitButton type="primary" onClick={this.showModal} value="Add new word" />
+                <CollectionCreateForm
+                    wrappedComponentRef={this.saveFormRef}
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    onCreate={this.handleCreate}
+                />
                 <Table
                     components={components}
                     rowClassName={() => 'editable-row'}
