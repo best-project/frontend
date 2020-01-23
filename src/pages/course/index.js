@@ -7,6 +7,7 @@ import { courseService, routingService, authService } from '../../services';
 import { Card, Spin } from 'antd';
 import { apiBase } from '../../config/variables';
 import EditableTable from '../../components/Table';
+import EditableTablePuzzle from '../../components/TablePuzzle';
 
 const SpinWrapper = styled.div`
     flex-direction: column;
@@ -50,24 +51,40 @@ const CoursePage = props => {
                     <ContentComponent>
                         <Card
                             title={courseDetails[0] && courseDetails[0].name}
-                            extra={user && isAdmin ? <a href="#">Edit</a> : <></>}
+                            extra={
+                                user && isAdmin ? <a href="#">Edit</a> : <></>
+                            }
                         >
                             <img
                                 style={{ height: 180 }}
                                 alt="example"
-                                src={courseDetails[0] && apiBase + courseDetails[0].image}
+                                src={
+                                    courseDetails[0] &&
+                                    apiBase + courseDetails[0].image
+                                }
                             />
                             <p>
-                                <b>Description:</b> {courseDetails[0] && courseDetails[0].description}
+                                <b>Description:</b>{' '}
+                                {courseDetails[0] &&
+                                    courseDetails[0].description}
                             </p>
                             <p>
-                                <b>Type:</b> {courseDetails[0] && courseDetails[0].type}
+                                <b>Type:</b>{' '}
+                                {courseDetails[0] && courseDetails[0].type}
                             </p>
                         </Card>
-                        <EditableTable
-                            courseDetails={courseDetails}
-                            courseId={props.match.params.courseId}
-                        />
+                        {courseDetails[0] &&
+                        courseDetails[0].type == 'puzzle' ? (
+                            <EditableTablePuzzle
+                                courseDetails={courseDetails}
+                                courseId={props.match.params.courseId}
+                            />
+                        ) : (
+                            <EditableTable
+                                courseDetails={courseDetails}
+                                courseId={props.match.params.courseId}
+                            />
+                        )}
                     </ContentComponent>
                 </CoursesWrapperComponent>
             )}

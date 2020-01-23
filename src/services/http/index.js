@@ -27,6 +27,10 @@ export class HttpServiceFactory {
         return this.makeRequest(Methods.PATCH, url, body);
     }
 
+    DELETE(url, body) {
+        return this.makeRequest(Methods.DELETE, url, body);
+    }
+
     makeRequest(method, url, body) {
         const token = JSON.parse(this.storageService.getItem(jwtToken));
 
@@ -47,7 +51,9 @@ export class HttpServiceFactory {
 
     makeRequestForm(method, url, body) {
         const formData = new FormData();
-        Object.keys(body).forEach(fieldName => formData.append(fieldName, body[fieldName]));
+        Object.keys(body).forEach(fieldName =>
+            formData.append(fieldName, body[fieldName]),
+        );
 
         const token = JSON.parse(this.storageService.getItem(jwtToken));
         const headers = {

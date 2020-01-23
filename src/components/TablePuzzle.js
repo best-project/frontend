@@ -105,7 +105,7 @@ class EditableCell extends React.Component {
     }
 }
 
-export default class EditableTable extends React.Component {
+export default class EditableTablePuzzle extends React.Component {
     constructor(props) {
         super(props);
         this.columns = [
@@ -119,14 +119,6 @@ export default class EditableTable extends React.Component {
                 title: 'translation',
                 dataIndex: 'translation',
                 editable: false,
-            },
-            {
-                title: 'image',
-                dataIndex: 'image',
-                editable: false,
-                render: (text, record) => (
-                    <img width={100} height={100} src={text} />
-                ),
             },
             {
                 title: 'operation',
@@ -150,16 +142,13 @@ export default class EditableTable extends React.Component {
             props.courseDetails[0].data
         ) {
             courseDetails = props.courseDetails[0].data;
-            courseDetails = courseDetails.map(
-                ({ translate, word, image, id }) => {
-                    return {
-                        key: id,
-                        word: word,
-                        translation: translate,
-                        image: apiBase + image,
-                    };
-                },
-            );
+            courseDetails = courseDetails.map(({ translate, word, id }) => {
+                return {
+                    key: id,
+                    word: word,
+                    translation: translate,
+                };
+            });
         }
 
         this.state = {
@@ -203,7 +192,6 @@ export default class EditableTable extends React.Component {
                 key: count,
                 word: values.word,
                 translation: values.translation,
-                image: URL.createObjectURL(values.image.file.originFileObj),
             };
             this.setState({ visible: false });
 

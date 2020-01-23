@@ -14,7 +14,13 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         };
 
         render() {
-            const { visible, onCancel, onCreate, form } = this.props;
+            const {
+                visible,
+                onCancel,
+                onCreate,
+                form,
+                courseDetails,
+            } = this.props;
             const { getFieldDecorator } = form;
 
             return (
@@ -29,29 +35,38 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         <Form.Item label="Word">
                             {getFieldDecorator('word', {
                                 rules: [
-                                    { required: true, message: 'Please input the title of collection!' },
+                                    {
+                                        required: true,
+                                        message:
+                                            'Please input the title of collection!',
+                                    },
                                 ],
                             })(<Input />)}
                         </Form.Item>
                         <Form.Item label="Translation">
                             {getFieldDecorator('translation', {
                                 rules: [
-                                    { required: true, message: 'Please input the title of collection!' },
+                                    {
+                                        required: true,
+                                        message:
+                                            'Please input the title of collection!',
+                                    },
                                 ],
                             })(<Input />)}
                         </Form.Item>
-                        <Upload
-                            listType="image"
-                            multiple={false}
-                            fileList={this.fileList}
-                            setCurrentList={this.setCurrentfileList}
-                            form={form}
-                            id="image"
-                        >
-                            <Button>
-                                <Icon type="upload" /> Upload image for word
-                            </Button>
-                        </Upload>
+                        {courseDetails[0] &&
+                        courseDetails[0].type == 'normal' ? (
+                            <Upload
+                                listType="image"
+                                multiple={false}
+                                fileList={this.fileList}
+                                setCurrentList={this.setCurrentfileList}
+                                form={form}
+                                id="image"
+                            />
+                        ) : (
+                            <></>
+                        )}
                     </Form>
                 </Modal>
             );
