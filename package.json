@@ -60,7 +60,7 @@
     "react": "^16.11.0",
     "react-app-polyfill": "^1.0.4",
     "react-calendar": "^2.19.2",
-    "react-dev-utils": "^9.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.11.0",
     "react-dropzone": "^10.2.1",
     "react-image-crop": "^8.4.2",
